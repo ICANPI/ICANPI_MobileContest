@@ -9,7 +9,7 @@
     android:background="#fbfbfb">
 
     <LinearLayout
-        android:id="@+id/join_logo"
+        android:id="@+id/login_logo"
         android:layout_width="match_parent"
         android:layout_height="138dp"
         android:weightSum="100"
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="30"
-            android:src="@drawable/danjam_logo2"/>
+            android:src="@drawable/ic_danjam_logo2"/>
 
 
     </LinearLayout>
@@ -134,7 +134,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="32dp"
-        android:background="#00ACC1"
+        android:background="@drawable/facebook"
         />
 
     <Button
@@ -144,9 +144,7 @@
         app:layout_constraintTop_toTopOf="@id/fb_bt"
         app:layout_constraintRight_toLeftOf="@id/fb_bt"
         android:layout_marginRight="16dp"
-
-        android:background="#00ACC1"
-
+        android:background="@drawable/google_plus"
         />
 
     <Button
@@ -156,7 +154,7 @@
         app:layout_constraintTop_toTopOf="@id/fb_bt"
         app:layout_constraintLeft_toRightOf="@id/fb_bt"
         android:layout_marginLeft="16dp"
-        android:background="#00ACC1"
+        android:background="@drawable/kakaotalk"
         />
 
     <View
