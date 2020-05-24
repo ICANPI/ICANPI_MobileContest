@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_timer"
+        android:enabled="true"
+        android:icon="@drawable/ic_timer_check"
+        android:title="타이머"
+
+        />
+
+    <item
+        android:id="@+id/bottom_rank"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="업적" />
+    <item
+        android:id="@+id/bottom_community"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="커뮤니티" />
+
+    <item
+        android:id="@+id/bottom_set"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="설정" />
+
+
+</menu>

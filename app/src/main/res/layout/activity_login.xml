@@ -62,7 +62,8 @@
                 android:text="ID"
                 android:textSize="12sp"
                 android:paddingVertical="13dp"
-                android:paddingLeft="16dp"/>
+                android:paddingLeft="16dp"
+                android:fontFamily="@font/font"/>
 
             <EditText
                 android:layout_width="0dp"
@@ -113,7 +114,8 @@
                 android:text="PW"
                 android:textSize="12sp"
                 android:paddingVertical="13dp"
-                android:paddingLeft="16dp"/>
+                android:paddingLeft="16dp"
+                android:fontFamily="@font/font"/>
 
             <EditText
                 android:layout_width="0dp"
@@ -153,6 +155,7 @@
             android:text="LOGIN"
             android:textColor="#ffffff"
             android:textSize="15sp"
+            android:fontFamily="@font/font"
             />
 
     </com.loopeer.shadow.ShadowView>
@@ -177,6 +180,7 @@
             android:textColor="#ffc200"
             android:textSize="15sp"
 
+            android:fontFamily="@font/font"
             />
 
     </com.loopeer.shadow.ShadowView>
@@ -264,6 +268,7 @@
         app:layout_constraintBottom_toBottomOf="@id/divider"
         android:layout_marginRight="6dp"
         android:text="아이디 찾기"
+        android:fontFamily="@font/font"
         />
 
     <TextView
@@ -275,6 +280,7 @@
         app:layout_constraintBottom_toBottomOf="@id/divider"
         android:layout_marginLeft="6dp"
         android:text="비밀번호 찾기"
+        android:fontFamily="@font/font"
         />
 
 
