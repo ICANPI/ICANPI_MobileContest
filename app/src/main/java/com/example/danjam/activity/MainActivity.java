@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.danjam.R;
 import com.example.danjam.Splash;
@@ -20,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
 
+    private View timer_view,rank_view,community_view,set_view;
     private FragmentManager fm = getSupportFragmentManager();
 
     private FragmentTimer fragmenttimer = new FragmentTimer();
@@ -31,10 +33,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent splashintent = new Intent(this, Splash.class);
-        startActivity(splashintent);
+
+        Intent intent = new Intent(this, Splash.class);
+        startActivity(intent);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom);
+        timer_view = findViewById(R.id.timer_view);
+        rank_view = findViewById(R.id.rank_view);
+        community_view = findViewById(R.id.community_view);
+        set_view = findViewById(R.id.set_view);
 
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment,fragmenttimer);
@@ -46,18 +53,35 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.bottom_timer: {
                         transaction.replace(R.id.fragment,fragmenttimer).commitAllowingStateLoss();
+                        timer_view.setVisibility(View.VISIBLE);
+                        rank_view.setVisibility(View.INVISIBLE);
+                        community_view.setVisibility(View.INVISIBLE);
+                        set_view.setVisibility(View.INVISIBLE);
+
                         break;
                     }
                     case R.id.bottom_rank: {
                         transaction.replace(R.id.fragment, fragmentrank).commitAllowingStateLoss();
+                        timer_view.setVisibility(View.INVISIBLE);
+                        rank_view.setVisibility(View.VISIBLE);
+                        community_view.setVisibility(View.INVISIBLE);
+                        set_view.setVisibility(View.INVISIBLE);
                         break;
                     }
                     case R.id.bottom_community: {
                         transaction.replace(R.id.fragment, fragmentcommunity).commitAllowingStateLoss();
+                        timer_view.setVisibility(View.INVISIBLE);
+                        rank_view.setVisibility(View.INVISIBLE);
+                        community_view.setVisibility(View.VISIBLE);
+                        set_view.setVisibility(View.INVISIBLE);
                         break;
                     }
                     case R.id.bottom_set:{
                         transaction.replace(R.id.fragment,fragmentset).commitAllowingStateLoss();
+                        timer_view.setVisibility(View.INVISIBLE);
+                        rank_view.setVisibility(View.INVISIBLE);
+                        community_view.setVisibility(View.INVISIBLE);
+                        set_view.setVisibility(View.VISIBLE);
                         break;
                     }
                 }

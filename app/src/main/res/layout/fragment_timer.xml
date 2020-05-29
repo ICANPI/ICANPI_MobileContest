@@ -79,8 +79,6 @@
         app:layout_constraintRight_toRightOf="@id/today_sleep"
         android:background="#ffc200"
         android:layout_marginTop="87dp"
-
-
         />
 
 
