@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <service android:name=".Screen_check" />
         <activity android:name=".activity.JoinActivity" >
         </activity>
         <activity android:name=".activity.LoginActivity" />
@@ -20,6 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".ScreenOnReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:label="ScreenOnReceiver"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

@@ -92,6 +92,7 @@
         android:text="09:22:00"
         />
     <ImageView
+        android:id="@+id/timer"
         android:layout_width="0dp"
         android:layout_height="182dp"
         app:layout_constraintTop_toBottomOf="@id/today_sleep"

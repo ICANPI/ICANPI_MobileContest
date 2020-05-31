@@ -13,14 +13,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.danjam.R;
+import com.example.danjam.ScreenOnReceiver;
+import com.example.danjam.Screen_check;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentTimer extends Fragment {
+
+    ImageView timer;
 
     private BroadcastReceiver scrOnReceiver;
     private BroadcastReceiver scrOffReceiver;
@@ -36,38 +41,26 @@ public class FragmentTimer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
 
-        scrOffFilter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-        registerReceiver(scrOnReceiver, scrOnFilter);
-        registerReceiver(scrOffReceiver, scrOffFilter);
+        timer = view.findViewById(R.id.timer);
 
-        scrOnReceiver = new BroadcastReceiver() {
+        timer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.e("hi", "SCREEN ON" );
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), Screen_check.class);
+                getContext().startService(i);
+
+
+
             }
-        };
-
-        scrOnFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-
-        scrOffReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.d("hi", "SCREEN OFF");
-            }
-        };
+        });
 
 
-
-        // Inflate the layout for this fragment
 
 
         return view;
     }
 
-    private void registerReceiver(BroadcastReceiver scrOnReceiver, IntentFilter scrOnFilter) {
 
-    }
 }
