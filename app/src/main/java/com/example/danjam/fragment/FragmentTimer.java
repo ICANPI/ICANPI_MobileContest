@@ -1,23 +1,23 @@
 package com.example.danjam.fragment;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.danjam.R;
-import com.example.danjam.ScreenOnReceiver;
-import com.example.danjam.Screen_check;
+import com.example.danjam.service.Screen_check;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 /**
@@ -26,12 +26,13 @@ import com.example.danjam.Screen_check;
 public class FragmentTimer extends Fragment {
 
     ImageView timer;
+    TextView timer_tv;
 
     private BroadcastReceiver scrOnReceiver;
     private BroadcastReceiver scrOffReceiver;
     private IntentFilter scrOnFilter;
     private IntentFilter scrOffFilter;
-
+    private String str;
 
     public FragmentTimer() {
         // Required empty public constructor
@@ -44,15 +45,14 @@ public class FragmentTimer extends Fragment {
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
 
         timer = view.findViewById(R.id.timer);
+        timer_tv = view.findViewById(R.id.today_sleep);
+
 
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), Screen_check.class);
                 getContext().startService(i);
-
-
-
             }
         });
 

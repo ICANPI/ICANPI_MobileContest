@@ -1,13 +1,12 @@
-package com.example.danjam;
+package com.example.danjam.service;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
-import android.util.Log;
 
-import androidx.annotation.Nullable;
+import com.example.danjam.broadcastreciver.ScreenOnReceiver;
 
 public class Screen_check extends Service{
 

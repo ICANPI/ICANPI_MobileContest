@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <service android:name=".Screen_check" />
+        <service android:name=".service.Screen_check" />
         <activity android:name=".activity.JoinActivity" >
         </activity>
         <activity android:name=".activity.LoginActivity" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".ScreenOnReceiver"
+            android:name=".broadcastreciver.ScreenOnReceiver"
             android:enabled="true"
             android:exported="false"
             android:label="ScreenOnReceiver"
