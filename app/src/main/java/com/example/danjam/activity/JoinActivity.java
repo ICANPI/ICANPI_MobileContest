@@ -48,13 +48,13 @@ public class JoinActivity extends AppCompatActivity {
                 pw = PW.getText().toString();
                 email = Email.getText().toString();
                 username = Username.getText().toString();
-
                 createPost(id,pw,email,username);
 
 
             }
         });
     }
+
     private void createPost(String st1,String st2,String st3,String st4){
 
         Apiservice apiservice = retrofit.create(Apiservice.class);

@@ -150,6 +150,7 @@
         app:shadowColor="#ffc200"
         >
         <Button
+            android:id="@+id/page_login_bt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffc200"
@@ -174,6 +175,7 @@
         app:shadowColor="#49000000"
         >
         <Button
+            android:id="@+id/signup_bt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff"
