@@ -61,6 +61,9 @@ public class JoinActivity extends AppCompatActivity {
                     joinBT.setEnabled(false);
                     Toast.makeText(JoinActivity.this, "첫 단어는 영어로, 영어와 숫자 3~16자리로 해주세요", Toast.LENGTH_SHORT).show();
                 }
+                else{
+                    joinBT.setEnabled(true);
+                }
             }
 
             @Override
@@ -78,6 +81,7 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
 
             }
 

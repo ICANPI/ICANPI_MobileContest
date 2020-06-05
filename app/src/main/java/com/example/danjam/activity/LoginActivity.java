@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.danjam.R;
 import com.example.danjam.Splash;
@@ -31,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Login_PW;
     private String Login_ID_str;
     private String Login_PW_str;
-    private signin signin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +93,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<signin> call, Response<signin> response) {
 
                 if (response.isSuccessful()) {
-                    Log.e("hi", signin.getMessage());
+                    Log.e("hi", response.body().toString());
+                    Intent mainintent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(mainintent);
                 }
-                Intent mainintent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(mainintent);
-
+                Toast.makeText(LoginActivity.this, "아이디 비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
             }
 
             @Override
