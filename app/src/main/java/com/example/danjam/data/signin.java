@@ -1,29 +1,38 @@
 package com.example.danjam.data;
 
 public class signin {
-    String id;
-    String pw;
 
-    public String getId() {
-        return id;
+    private int status;
+    private String message;
+    private String token;
+
+    public int getStatus() {
+        return status;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getPw() {
-        return pw;
+    public String getMessage() {
+        return message;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-    public signin(String id, String pw) {
-        this.id = id;
-        this.pw = pw;
+    public signin(int status, String message, String token) {
+        this.status = status;
+        this.message = message;
+        this.token = token;
     }
 }

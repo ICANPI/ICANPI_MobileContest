@@ -64,6 +64,7 @@
             android:layout_marginVertical="13dp"
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/font"
+            android:textColor="#9a9a9a"
         />
 
     <EditText
@@ -94,6 +95,7 @@
         android:layout_marginVertical="13dp"
         android:layout_marginLeft="16dp"
         android:fontFamily="@font/font"
+        android:textColor="#9a9a9a"
         />
 
     <EditText
@@ -124,6 +126,7 @@
         android:layout_marginVertical="13dp"
         android:layout_marginLeft="16dp"
         android:fontFamily="@font/font"
+        android:textColor="#9a9a9a"
         />
 
     <EditText
@@ -154,6 +157,7 @@
         android:layout_marginVertical="13dp"
         android:layout_marginLeft="16dp"
         android:fontFamily="@font/font"
+        android:textColor="#9a9a9a"
         />
 
     <Button

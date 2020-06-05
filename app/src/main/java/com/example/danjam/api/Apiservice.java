@@ -11,13 +11,14 @@ import retrofit2.http.POST;
 public interface Apiservice {
 
     @FormUrlEncoded
-    @POST("/auth/signup")
+    @POST("auth/signup")
     Call<signup> SignupPost(
             @Field("id") String id,
             @Field("password") String password,
             @Field("email") String email,
             @Field("username") String username
             );
+
     @FormUrlEncoded
     @POST("auth/signin")
     Call<signin> SigninPost(

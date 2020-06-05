@@ -8,14 +8,20 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.danjam.R;
 import com.example.danjam.api.Apiservice;
 import com.example.danjam.data.signup;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JoinActivity extends AppCompatActivity {
     private EditText ID,PW,Email,Username;
@@ -23,6 +29,7 @@ public class JoinActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private String id,pw,email,username;
     final static String BASE_URL = "https://unitaemin.run.goorm.io/danzam/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +42,87 @@ public class JoinActivity extends AppCompatActivity {
         Username = findViewById(R.id.join_name);
         joinBT = findViewById(R.id.join_bt);
 
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        Username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String s = charSequence.toString();
+                if (!UsernameRegex(s)){
+                    joinBT.setEnabled(false);
+                    Toast.makeText(JoinActivity.this, "첫 단어는 영어로, 영어와 숫자 3~16자리로 해주세요", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        ID.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        PW.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        Email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
 
         joinBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +133,13 @@ public class JoinActivity extends AppCompatActivity {
                 email = Email.getText().toString();
                 username = Username.getText().toString();
                 createPost(id,pw,email,username);
+                if (id.length()==0||pw.length()==0||email.length()==0||username.length()==0){
 
+                }
 
             }
         });
+
     }
 
     private void createPost(String st1,String st2,String st3,String st4){
@@ -76,4 +163,45 @@ public class JoinActivity extends AppCompatActivity {
         });
 
     }
+    private static boolean IDRegex(String input){
+        Pattern pattern = Pattern.compile("^[A-Za-z]{1}[A-Za-z0-9]{3,16}$");
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    private static boolean PasswordRegex(String input){
+        Pattern pattern = Pattern.compile("^.*(?=^.{6,15}$)(?=.*\\d)(?=.*[a-zA-Z]).*$");
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    private static boolean UsernameRegex(String input){
+        Pattern pattern = Pattern.compile("^[\\w\\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$");
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    private static boolean EmailRegex(String input){
+        Pattern pattern = Pattern.compile("^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$");
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

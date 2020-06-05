@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.danjam.activity.LoginActivity;
 import com.example.danjam.activity.MainActivity;
 
 public class Splash extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class Splash extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
                 finish();
             }
         },2000);
