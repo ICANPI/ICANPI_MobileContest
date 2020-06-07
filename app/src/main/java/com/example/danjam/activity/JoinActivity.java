@@ -48,6 +48,7 @@ public class JoinActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         Username.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -59,7 +60,7 @@ public class JoinActivity extends AppCompatActivity {
                 String s = charSequence.toString();
                 if (!UsernameRegex(s)){
                     joinBT.setEnabled(false);
-                    Toast.makeText(JoinActivity.this, "첫 단어는 영어로, 영어와 숫자 3~16자리로 해주세요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JoinActivity.this, "유저 이름은 2~20자리 안에 해주세요", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     joinBT.setEnabled(true);
@@ -81,7 +82,14 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                String s = charSequence.toString();
+                if (!IDRegex(s)){
+                    joinBT.setEnabled(false);
+                    Toast.makeText(JoinActivity.this, "아이디는 첫 단어는 영어로, 영어와 숫자 3~16자리로 해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    joinBT.setEnabled(true);
+                }
 
             }
 
@@ -100,6 +108,14 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String s = charSequence.toString();
+                if (!IDRegex(s)){
+                    joinBT.setEnabled(false);
+                    Toast.makeText(JoinActivity.this, "비밀번호는 영문과 숫자를 포함하여 6~15자리입니다", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    joinBT.setEnabled(true);
+                }
 
             }
 
@@ -117,6 +133,14 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String s = charSequence.toString();
+                if (!IDRegex(s)){
+                    joinBT.setEnabled(false);
+                    Toast.makeText(JoinActivity.this, "이메일 형식에 올바르게 작성해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    joinBT.setEnabled(true);
+                }
 
             }
 

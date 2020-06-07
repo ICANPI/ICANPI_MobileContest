@@ -8,7 +8,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +18,7 @@ import android.widget.Toast;
 import com.example.danjam.R;
 import com.example.danjam.Splash;
 import com.example.danjam.api.Apiservice;
-import com.example.danjam.data.signin;
-import com.example.danjam.data.signup;
+import com.example.danjam.data.Usermodel;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,11 +30,15 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Login_PW;
     private String Login_ID_str;
     private String Login_PW_str;
+    private String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         //레트로핏 선언부
         retrofit = new Retrofit.Builder()
@@ -86,24 +88,30 @@ public class LoginActivity extends AppCompatActivity {
     private void SigninPost(String st1,String st2){
 
         Apiservice apiservice = retrofit.create(Apiservice.class);
-        Call<signin> call =apiservice.SigninPost(st1,st2);
+        Call<Usermodel> call =apiservice.SigninPost(st1,st2);
 
-        call.enqueue(new Callback<signin>() {
+        call.enqueue(new Callback<Usermodel>() {
             @Override
-            public void onResponse(Call<signin> call, Response<signin> response) {
+            public void onResponse(Call<Usermodel> call, Response<Usermodel> response) {
 
                 if (response.isSuccessful()) {
-                    Log.e("hi", response.body().toString());
-                    Intent mainintent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(mainintent);
+                    Usermodel usermodel = response.body();
+                    Log.e("token",usermodel.getToken());
+
+                   Intent mainintent= new Intent(getApplicationContext(),MainActivity.class);
+                   startActivity(mainintent);
+
+                }else {
+                    Toast.makeText(LoginActivity.this, "아이디 비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(LoginActivity.this, "아이디 비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<signin> call, Throwable t) {
+            public void onFailure(Call<Usermodel> call, Throwable t) {
 
             }
+
+
         });
 
     }

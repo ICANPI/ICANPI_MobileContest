@@ -1,6 +1,6 @@
 package com.example.danjam.api;
 
-import com.example.danjam.data.signin;
+import com.example.danjam.data.Usermodel;
 import com.example.danjam.data.signup;
 
 import retrofit2.Call;
@@ -21,7 +21,7 @@ public interface Apiservice {
 
     @FormUrlEncoded
     @POST("auth/signin")
-    Call<signin> SigninPost(
+    Call<Usermodel> SigninPost(
             @Field("id")String id,
             @Field("password")String password
 
