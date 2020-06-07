@@ -37,21 +37,24 @@ public class MainActivity extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom);
+
         timer_view = findViewById(R.id.timer_view);
         rank_view = findViewById(R.id.rank_view);
         community_view = findViewById(R.id.community_view);
         set_view = findViewById(R.id.set_view);
 
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.fragment,fragmenttimer);
+        transaction.replace(R.id.fragment,fragmenttimer).commitAllowingStateLoss();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FragmentTransaction transaction = fm.beginTransaction();
+
                 switch (item.getItemId()) {
+
                     case R.id.bottom_timer: {
-                        transaction.replace(R.id.fragment,fragmenttimer).commitAllowingStateLoss();
+                        transaction.replace(R.id.fragment,fragmenttimer).addToBackStack(null).commit();
                         timer_view.setVisibility(View.VISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.bottom_rank: {
-                        transaction.replace(R.id.fragment, fragmentrank).commitAllowingStateLoss();
+                        transaction.replace(R.id.fragment, fragmentrank).addToBackStack(null).commit();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.VISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.bottom_community: {
-                        transaction.replace(R.id.fragment, fragmentcommunity).commitAllowingStateLoss();
+                        transaction.replace(R.id.fragment, fragmentcommunity).addToBackStack(null).commit();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.VISIBLE);
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.bottom_set:{
-                        transaction.replace(R.id.fragment,fragmentset).commitAllowingStateLoss();
+                        transaction.replace(R.id.fragment,fragmentset).addToBackStack(null).commit();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.INVISIBLE);

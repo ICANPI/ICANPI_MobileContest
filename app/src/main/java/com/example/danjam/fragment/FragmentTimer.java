@@ -25,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class FragmentTimer extends Fragment {
 
+
     ImageView timer;
     TextView timer_tv;
 
@@ -61,6 +62,7 @@ public class FragmentTimer extends Fragment {
 
         return view;
     }
+
 
 
 }
