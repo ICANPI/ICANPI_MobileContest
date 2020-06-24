@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.danjam.R;
-import com.example.danjam.Splash;
 import com.example.danjam.fragment.FragmentCommunity;
 import com.example.danjam.fragment.FragmentRank;
 import com.example.danjam.fragment.FragmentSet;
@@ -20,8 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private View timer_view,rank_view,community_view,set_view;
+    private View timer_view, rank_view, community_view, set_view;
     private FragmentManager fm = getSupportFragmentManager();
 
     private FragmentTimer fragmenttimer = new FragmentTimer();
@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom);
 
         timer_view = findViewById(R.id.timer_view);
@@ -43,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
         community_view = findViewById(R.id.community_view);
         set_view = findViewById(R.id.set_view);
 
+
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.fragment,fragmenttimer).commitAllowingStateLoss();
+        transaction.replace(R.id.fragment, fragmenttimer).commitAllowingStateLoss();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.bottom_timer: {
-                        transaction.replace(R.id.fragment,fragmenttimer).addToBackStack(null).commit();
+                        transaction.replace(R.id.fragment, fragmenttimer).addToBackStack(null).commit();
                         timer_view.setVisibility(View.VISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
@@ -78,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
                         set_view.setVisibility(View.INVISIBLE);
                         break;
                     }
-                    case R.id.bottom_set:{
-                        transaction.replace(R.id.fragment,fragmentset).addToBackStack(null).commit();
+                    case R.id.bottom_set: {
+                        transaction.replace(R.id.fragment, fragmentset).addToBackStack(null).commit();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
@@ -90,11 +89,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
-
-
 
     }
 }

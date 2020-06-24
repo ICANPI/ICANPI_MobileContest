@@ -134,7 +134,7 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String s = charSequence.toString();
-                if (!IDRegex(s)){
+                if (!EmailRegex(s)){
                     joinBT.setEnabled(false);
                     Toast.makeText(JoinActivity.this, "이메일 형식에 올바르게 작성해주세요", Toast.LENGTH_SHORT).show();
                 }

@@ -238,7 +238,9 @@
 
     </com.loopeer.shadow.ShadowView>
 
+
     <com.loopeer.shadow.ShadowView
+        android:id="@+id/kakao_shadow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/facebook_bt_shadow"
@@ -257,6 +259,8 @@
 
 
     </com.loopeer.shadow.ShadowView>
+
+
 
     <View
         android:id="@+id/divider"

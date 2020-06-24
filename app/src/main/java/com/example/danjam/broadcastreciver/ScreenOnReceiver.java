@@ -3,19 +3,17 @@ package com.example.danjam.broadcastreciver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.danjam.fragment.FragmentTimer;
+import com.example.danjam.activity.MainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.LogRecord;
-import java.util.logging.SimpleFormatter;
 
 public class ScreenOnReceiver extends BroadcastReceiver {
-    String formatDate;
-    FragmentTimer fragmentTimer = new FragmentTimer();
+    private String formatDate;
+
 
 
     @Override
@@ -27,13 +25,13 @@ public class ScreenOnReceiver extends BroadcastReceiver {
             Date date = new Date(now);
             SimpleDateFormat sdfNow = new SimpleDateFormat();
             formatDate = sdfNow.format(date);
+            Intent timeSendIntent = new Intent(context, MainActivity.class);
+            timeSendIntent.putExtra("time",formatDate);
+            context.startActivity(timeSendIntent);
 
-            Bundle bundle = new Bundle(1);
-            bundle.putString("key",formatDate);
-
-            Log.e("hi",formatDate);
         }
         else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+
             Log.e("hi","screen off");
         }
 
