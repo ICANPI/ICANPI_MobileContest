@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,6 +24,8 @@ import com.example.danjam.broadcastreciver.ScreenOnReceiver;
 import com.example.danjam.service.Screen_check;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.sql.Time;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,13 +36,7 @@ public class FragmentTimer extends Fragment {
 
     ImageView timer;
     TextView timer_tv;
-    BroadcastReceiver mReceiver;
 
-    private BroadcastReceiver scrOnReceiver;
-    private BroadcastReceiver scrOffReceiver;
-    private IntentFilter scrOnFilter;
-    private IntentFilter scrOffFilter;
-    private String str;
 
     public FragmentTimer() {
         // Required empty public constructor
@@ -50,16 +48,24 @@ public class FragmentTimer extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
 
+
+
+
         timer = view.findViewById(R.id.timer);
         timer_tv = view.findViewById(R.id.today_sleep);
-        if (Timer != null){
-            timer_tv.setText(Timer);
+
+        //타임값 가져와주기
+        if (getArguments()!= null){
+
+            Timer = getArguments().getString("time_data","");
 
         }
 
+        if (Timer!=null){
+            timer_tv.setText(Timer);
+        }
 
-
-
+        //버튼 클릭시 서비스 시작
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,18 +76,8 @@ public class FragmentTimer extends Fragment {
         return view;
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (getActivity().getIntent().getStringExtra("time")!=null){
 
-            Timer = getActivity().getIntent().getStringExtra("time");
-        }
-        else {
-            Log.e("hi","값 안받아와짐");
-        }
-
-
-
-    }
 }
+
+
+

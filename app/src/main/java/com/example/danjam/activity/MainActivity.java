@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,8 +21,12 @@ import com.example.danjam.fragment.FragmentSet;
 import com.example.danjam.fragment.FragmentTimer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.sql.Time;
+
 public class MainActivity extends AppCompatActivity {
 
+    private String time;
+    private String Timer;
     private View timer_view, rank_view, community_view, set_view;
     private FragmentManager fm = getSupportFragmentManager();
 
@@ -41,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         community_view = findViewById(R.id.community_view);
         set_view = findViewById(R.id.set_view);
 
+        SharedPreferences sf = getSharedPreferences("time_file", Context.MODE_PRIVATE);
+        Timer = sf.getString("time","");
+
+        //fragment 에 값 보내주기
+        Bundle bundle = new Bundle();
+        bundle.putString("time_data", Timer);
+        fragmenttimer.setArguments(bundle);
 
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment, fragmenttimer).commitAllowingStateLoss();
@@ -89,6 +102,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //실시간으로 값 받기
+        if (getIntent().getStringExtra("time")!=null){
+            time = getIntent().getStringExtra("time");
+            Log.e("activity",time);
+            SharedPreferences sharedPreferences = getSharedPreferences("time_file", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("time",time);
+            editor.commit();
+        }
+        else {
+            Log.e("hi","값 안받아와짐");
+        }
+
 
     }
 }

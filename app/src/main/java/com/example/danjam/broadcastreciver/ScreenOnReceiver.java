@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.danjam.activity.MainActivity;
+import com.example.danjam.fragment.FragmentTimer;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +24,7 @@ public class ScreenOnReceiver extends BroadcastReceiver {
         if (action.equals(Intent.ACTION_SCREEN_ON)) {
             long now = System.currentTimeMillis();
             Date date = new Date(now);
-            SimpleDateFormat sdfNow = new SimpleDateFormat();
+            SimpleDateFormat sdfNow = new SimpleDateFormat("HH:mm:ss");
             formatDate = sdfNow.format(date);
             Intent timeSendIntent = new Intent(context, MainActivity.class);
             timeSendIntent.putExtra("time",formatDate);
