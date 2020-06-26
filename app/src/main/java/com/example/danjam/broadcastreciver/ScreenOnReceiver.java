@@ -28,7 +28,7 @@ public class ScreenOnReceiver extends BroadcastReceiver {
             formatDate = sdfNow.format(date);
             Intent timeSendIntent = new Intent(context, MainActivity.class);
             timeSendIntent.putExtra("time",formatDate);
-            context.startActivity(timeSendIntent);
+            context.startActivity(timeSendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
         else if (action.equals(Intent.ACTION_SCREEN_OFF)) {

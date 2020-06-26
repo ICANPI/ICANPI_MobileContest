@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,6 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.danjam.R;
+import com.example.danjam.broadcastreciver.Alarm;
 import com.example.danjam.fragment.FragmentCommunity;
 import com.example.danjam.fragment.FragmentRank;
 import com.example.danjam.fragment.FragmentSet;
@@ -22,6 +27,7 @@ import com.example.danjam.fragment.FragmentTimer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Time;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private String Timer;
     private View timer_view, rank_view, community_view, set_view;
     private FragmentManager fm = getSupportFragmentManager();
+    private AlarmManager alarmManager;
+    private int hour =16,minute=11;
+    private Button button;
 
     private FragmentTimer fragmenttimer = new FragmentTimer();
     private FragmentRank fragmentrank = new FragmentRank();
@@ -47,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
         community_view = findViewById(R.id.community_view);
         set_view = findViewById(R.id.set_view);
 
+
         SharedPreferences sf = getSharedPreferences("time_file", Context.MODE_PRIVATE);
-        Timer = sf.getString("time","");
+        //값없으면 00:00:00 뿌려줌
+        Timer = sf.getString("time","00:00:00");
 
         //fragment 에 값 보내주기
         Bundle bundle = new Bundle();
@@ -66,16 +77,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.bottom_timer: {
-                        transaction.replace(R.id.fragment, fragmenttimer).addToBackStack(null).commit();
+                        transaction.replace(R.id.fragment, fragmenttimer).commitAllowingStateLoss();
                         timer_view.setVisibility(View.VISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
                         set_view.setVisibility(View.INVISIBLE);
-
                         break;
                     }
                     case R.id.bottom_rank: {
-                        transaction.replace(R.id.fragment, fragmentrank).addToBackStack(null).commit();
+                        transaction.replace(R.id.fragment, fragmentrank).commitAllowingStateLoss();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.VISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
@@ -83,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.bottom_community: {
-                        transaction.replace(R.id.fragment, fragmentcommunity).addToBackStack(null).commit();
+                        transaction.replace(R.id.fragment, fragmentcommunity).commitAllowingStateLoss();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.VISIBLE);
@@ -91,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.bottom_set: {
-                        transaction.replace(R.id.fragment, fragmentset).addToBackStack(null).commit();
+                        transaction.replace(R.id.fragment, fragmentset).commitAllowingStateLoss();
                         timer_view.setVisibility(View.INVISIBLE);
                         rank_view.setVisibility(View.INVISIBLE);
                         community_view.setVisibility(View.INVISIBLE);
@@ -102,6 +112,29 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //알람 10시부터 스타뜨
+//                Intent AlarmIntent = new Intent(getApplicationContext(),Alarm.class);
+//                PendingIntent AlarmPIntent = PendingIntent.getBroadcast(getApplicationContext(),0,AlarmIntent,0);
+//
+//                alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+//
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY, hour);
+//                calendar.set(Calendar.MINUTE, minute);
+//                calendar.set(Calendar.SECOND, 0);
+//                calendar.set(Calendar.MILLISECOND, 0);
+//
+//                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),  AlarmManager.INTERVAL_DAY, AlarmPIntent);
+//
+//
+//            }
+//        });
+
 
     }
 
@@ -120,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             Log.e("hi","값 안받아와짐");
         }
-
 
     }
 }

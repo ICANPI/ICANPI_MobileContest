@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 
+import com.example.danjam.broadcastreciver.Alarm;
 import com.example.danjam.broadcastreciver.ScreenOnReceiver;
 
 public class Screen_check extends Service{
 
     private BroadcastReceiver mReceiver;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -19,6 +19,7 @@ public class Screen_check extends Service{
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         mReceiver = new ScreenOnReceiver();
         registerReceiver(mReceiver, filter);
+
     }
 
     @Override
@@ -29,6 +30,7 @@ public class Screen_check extends Service{
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             mReceiver = new ScreenOnReceiver();
             registerReceiver(mReceiver, filter);
+
         }
         return START_STICKY;
     }
