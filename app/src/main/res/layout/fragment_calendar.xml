@@ -3,11 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.CalendarFragment">
-    
-    <CalendarView
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        app:type="classic"
+        app:headerColor="#6744ff"
+        app:eventsEnabled="true"
+        app:abbreviationsLabelsColor="#6744ff"
+        app:selectionColor="#ffc200"
+        app:selectionLabelColor="#fff"/>
+
+
 
 </FrameLayout>

@@ -1,5 +1,7 @@
 package com.example.danjam.api;
 
+import com.example.danjam.data.SleepUpdateInfo;
+import com.example.danjam.data.UserRevise;
 import com.example.danjam.data.Usermodel;
 import com.example.danjam.data.signup;
 
@@ -7,6 +9,8 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface Apiservice {
 
@@ -24,6 +28,15 @@ public interface Apiservice {
     Call<Usermodel> SigninPost(
             @Field("id")String id,
             @Field("password")String password
-
     );
+    @PUT("auht/update_info")
+    Call<UserRevise> ReviseUser(
+            @Path("type")String id,
+            @Path("text")String password
+    );
+    @PUT("sleep/update")
+    Call<SleepUpdateInfo> SleepUpdate(
+            @Path("day")String day
+    );
+    
 }

@@ -34,9 +34,11 @@ import java.sql.Time;
 public class FragmentTimer extends Fragment {
 
     private String Timer;
-
-    ImageView timer;
+    Button calender_move;
+    Button timer;
     TextView timer_tv;
+
+    CalendarFragment calendarFragment = new CalendarFragment();
 
 
     public FragmentTimer() {
@@ -52,8 +54,21 @@ public class FragmentTimer extends Fragment {
 
 
 
+
+        calender_move = view.findViewById(R.id.calendar_move);
         timer = view.findViewById(R.id.timer);
         timer_tv = view.findViewById(R.id.today_sleep);
+
+        calender_move.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                final FragmentTransaction transaction = fm.beginTransaction();
+
+                transaction.replace(R.id.fragment,calendarFragment).commitAllowingStateLoss();
+            }
+        });
 
         //타임값 가져와주기
         if (getArguments()!= null){

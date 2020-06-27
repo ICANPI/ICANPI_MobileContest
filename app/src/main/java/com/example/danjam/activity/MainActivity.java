@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom);
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom);
 
         timer_view = findViewById(R.id.timer_view);
         rank_view = findViewById(R.id.rank_view);
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment, fragmenttimer).commitAllowingStateLoss();
+        bottomNavigationView.setItemIconTintList(null);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -114,26 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //알람 10시부터 스타뜨
-//                Intent AlarmIntent = new Intent(getApplicationContext(),Alarm.class);
-//                PendingIntent AlarmPIntent = PendingIntent.getBroadcast(getApplicationContext(),0,AlarmIntent,0);
-//
-//                alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-//
-//                Calendar calendar = Calendar.getInstance();
-//                calendar.set(Calendar.HOUR_OF_DAY, hour);
-//                calendar.set(Calendar.MINUTE, minute);
-//                calendar.set(Calendar.SECOND, 0);
-//                calendar.set(Calendar.MILLISECOND, 0);
-//
-//                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),  AlarmManager.INTERVAL_DAY, AlarmPIntent);
-//
-//
-//            }
-//        });
+
 
 
     }
@@ -156,3 +139,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
+//알람 매니저
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //알람 10시부터 스타뜨
+//                Intent AlarmIntent = new Intent(getApplicationContext(),Alarm.class);
+//                PendingIntent AlarmPIntent = PendingIntent.getBroadcast(getApplicationContext(),0,AlarmIntent,0);
+//
+//                alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+//
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY, hour);
+//                calendar.set(Calendar.MINUTE, minute);
+//                calendar.set(Calendar.SECOND, 0);
+//                calendar.set(Calendar.MILLISECOND, 0);
+//
+//                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),  AlarmManager.INTERVAL_DAY, AlarmPIntent);
+//
+//
+//            }
+//        });
