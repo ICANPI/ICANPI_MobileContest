@@ -51,10 +51,6 @@ public class FragmentTimer extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
 
-
-
-
-
         calender_move = view.findViewById(R.id.calendar_move);
         timer = view.findViewById(R.id.timer);
         timer_tv = view.findViewById(R.id.today_sleep);

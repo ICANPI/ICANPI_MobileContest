@@ -99,23 +99,39 @@
                 android:paddingVertical="13dp"
                 android:paddingLeft="30dp"
                 android:textSize="11sp"
-                android:textColor="#9a9a9a" />
-            <LinearLayout
+                android:textColor="#9a9a9a"
+                android:clickable="false"/>
+
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="17.5"
-                >
+                android:layout_weight="17.5">
+
                 <Button
                     android:id="@+id/revise_id_button"
                     android:layout_width="45dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/round"
+                    android:background="@drawable/login_round"
                     android:layout_marginVertical="3dp"
                     android:text="수정"
                     android:textColor="#ffffff"
                     android:fontFamily="@font/font"
+                    android:visibility="visible"
                     />
-            </LinearLayout>
+
+                <Button
+                    android:id="@+id/revise_id_button_check"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/login_round"
+                    android:layout_marginVertical="3dp"
+                    android:text="확인"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/font"
+                    android:visibility="invisible"
+                    />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -163,8 +179,9 @@
                 android:paddingVertical="13dp"
                 android:paddingLeft="30dp"
                 android:textSize="11sp"
-                android:textColor="#9a9a9a" />
-            <LinearLayout
+                android:textColor="#9a9a9a"
+                android:clickable="false"/>
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="17.5"
@@ -173,13 +190,25 @@
                     android:id="@+id/revise_pw_button"
                     android:layout_width="45dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/round"
+                    android:background="@drawable/login_round"
                     android:layout_marginVertical="3dp"
                     android:text="수정"
                     android:textColor="#ffffff"
                     android:fontFamily="@font/font"
+                    android:visibility="visible"
                     />
-            </LinearLayout>
+                <Button
+                    android:id="@+id/revise_pw_button_check"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/login_round"
+                    android:layout_marginVertical="3dp"
+                    android:text="수정"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/font"
+                    android:visibility="invisible"
+                    />
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -225,8 +254,11 @@
                 android:background="#ffffff"
                 android:paddingVertical="13dp"
                 android:textSize="11sp"
-                android:textColor="#9a9a9a" />
-            <LinearLayout
+                android:textColor="#9a9a9a"
+                android:focusable="false"
+                android:clickable="false"/>
+
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="17.5"
@@ -235,13 +267,27 @@
                     android:id="@+id/revise_name_button"
                     android:layout_width="45dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/round"
+                    android:background="@drawable/login_round"
                     android:layout_marginVertical="3dp"
                     android:text="수정"
                     android:textColor="#ffffff"
                     android:fontFamily="@font/font"
+                    android:visibility="visible"
                     />
-            </LinearLayout>
+                <Button
+                    android:id="@+id/revise_name_button_check"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/login_round"
+                    android:layout_marginVertical="3dp"
+                    android:text="확인"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/font"
+                    android:visibility="invisible"
+                    />
+
+
+            </RelativeLayout>
 
         </LinearLayout>
 

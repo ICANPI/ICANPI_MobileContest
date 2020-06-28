@@ -13,15 +13,15 @@
         android:theme="@style/AppTheme">
 
         <service android:name=".service.Screen_check" />
-        <activity android:name=".activity.JoinActivity"></activity>
+        <activity android:name=".activity.JoinActivity"/>
         <activity android:name=".activity.LoginActivity">
-        </activity>
-        <activity android:name=".Splash" />
-        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Splash" />
+        <activity android:name=".activity.MainActivity">
         </activity>
 
         <receiver
@@ -31,7 +31,7 @@
             android:label="ScreenOnReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="com.YECHAN_SCREEN"></action>
+                <action android:name="com.YECHAN_SCREEN"/>
 
             </intent-filter>
         </receiver>

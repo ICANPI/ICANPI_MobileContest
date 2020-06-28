@@ -109,7 +109,7 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String s = charSequence.toString();
-                if (!IDRegex(s)){
+                if (!PasswordRegex(s)){
                     joinBT.setEnabled(false);
                     Toast.makeText(JoinActivity.this, "비밀번호는 영문과 숫자를 포함하여 6~15자리입니다", Toast.LENGTH_SHORT).show();
                 }
@@ -124,6 +124,7 @@ public class JoinActivity extends AppCompatActivity {
 
             }
         });
+
 
         Email.addTextChangedListener(new TextWatcher() {
             @Override
@@ -141,7 +142,6 @@ public class JoinActivity extends AppCompatActivity {
                 else{
                     joinBT.setEnabled(true);
                 }
-
             }
 
             @Override
@@ -189,7 +189,6 @@ public class JoinActivity extends AppCompatActivity {
 
             }
         });
-
     }
     private static boolean IDRegex(String input){
         Pattern pattern = Pattern.compile("^[A-Za-z]{1}[A-Za-z0-9]{3,16}$");

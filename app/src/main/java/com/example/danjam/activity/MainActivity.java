@@ -34,11 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String time;
     private String Timer;
+    private String token;
     private View timer_view, rank_view, community_view, set_view;
     private FragmentManager fm = getSupportFragmentManager();
-    private AlarmManager alarmManager;
-    private int hour =16,minute=11;
-    private Button button;
 
     private FragmentTimer fragmenttimer = new FragmentTimer();
     private FragmentRank fragmentrank = new FragmentRank();
@@ -61,11 +59,16 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sf = getSharedPreferences("time_file", Context.MODE_PRIVATE);
         //값없으면 00:00:00 뿌려줌
         Timer = sf.getString("time","00:00:00");
+        token = getIntent().getStringExtra("token");
 
         //fragment 에 값 보내주기
         Bundle bundle = new Bundle();
         bundle.putString("time_data", Timer);
         fragmenttimer.setArguments(bundle);
+
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("token",token);
+        fragmentset.setArguments(bundle1);
 
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment, fragmenttimer).commitAllowingStateLoss();

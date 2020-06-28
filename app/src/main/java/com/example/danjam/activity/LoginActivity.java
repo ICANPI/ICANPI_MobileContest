@@ -19,6 +19,7 @@ import com.example.danjam.R;
 import com.example.danjam.Splash;
 import com.example.danjam.api.Apiservice;
 import com.example.danjam.data.Usermodel;
+import com.example.danjam.fragment.FragmentSet;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private String Login_ID_str;
     private String Login_PW_str;
     private String token;
+    FragmentSet fragmentSet = new FragmentSet();
 
 
     @Override
@@ -97,8 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Usermodel usermodel = response.body();
                     Log.e("token",usermodel.getToken());
-
                    Intent mainintent= new Intent(getApplicationContext(),MainActivity.class);
+                   mainintent.putExtra("token",usermodel.getToken());
                    startActivity(mainintent);
 
                 }else {
