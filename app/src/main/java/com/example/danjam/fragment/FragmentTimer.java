@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.danjam.R;
 import com.example.danjam.broadcastreciver.ScreenOnReceiver;
@@ -61,7 +62,6 @@ public class FragmentTimer extends Fragment {
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 final FragmentTransaction transaction = fm.beginTransaction();
-
                 transaction.replace(R.id.fragment,calendarFragment).commitAllowingStateLoss();
             }
         });
@@ -70,7 +70,6 @@ public class FragmentTimer extends Fragment {
         if (getArguments()!= null){
 
             Timer = getArguments().getString("time_data","");
-
         }
 
         if (Timer!=null){
@@ -81,6 +80,7 @@ public class FragmentTimer extends Fragment {
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "화면체크가 시작됩니다", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getContext(), Screen_check.class);
                 getContext().startService(i);
             }

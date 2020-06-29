@@ -28,14 +28,18 @@ import com.example.danjam.fragment.FragmentTimer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String time;
-    private String Timer;
+    private String TimeDifference;
     private String token;
     private View timer_view, rank_view, community_view, set_view;
+
     private FragmentManager fm = getSupportFragmentManager();
 
     private FragmentTimer fragmenttimer = new FragmentTimer();
@@ -57,17 +61,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         SharedPreferences sf = getSharedPreferences("time_file", Context.MODE_PRIVATE);
-        //값없으면 00:00:00 뿌려줌
-        Timer = sf.getString("time","00:00:00");
+
         token = getIntent().getStringExtra("token");
+
+        TimeDifference = sf.getString("time_difference", "00:00:00");
 
         //fragment 에 값 보내주기
         Bundle bundle = new Bundle();
-        bundle.putString("time_data", Timer);
+        bundle.putString("time_data", TimeDifference);
         fragmenttimer.setArguments(bundle);
 
+        //bundle1
         Bundle bundle1 = new Bundle();
-        bundle1.putString("token",token);
+        bundle1.putString("token", token);
         fragmentset.setArguments(bundle1);
 
         FragmentTransaction transaction = fm.beginTransaction();
@@ -119,27 +125,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        //실시간으로 값 받기
-        if (getIntent().getStringExtra("time")!=null){
-            time = getIntent().getStringExtra("time");
-            Log.e("activity",time);
-            SharedPreferences sharedPreferences = getSharedPreferences("time_file", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("time",time);
-            editor.commit();
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences sf1 = getSharedPreferences("time_fie",MODE_PRIVATE);
+        if (sf1.getString("time_difference","00:00:00")!=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("time_data",sf1.getString("time_difference","00:00:00"));
+            fragmenttimer.setArguments(bundle);
         }
-        else {
-            Log.e("hi","값 안받아와짐");
-        }
-
     }
 }
 

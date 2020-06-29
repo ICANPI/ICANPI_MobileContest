@@ -190,6 +190,7 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
     }
+
     private static boolean IDRegex(String input){
         Pattern pattern = Pattern.compile("^[A-Za-z]{1}[A-Za-z0-9]{3,16}$");
         Matcher matcher = pattern.matcher(input);

@@ -14,8 +14,8 @@ public class Alarm extends BroadcastReceiver {
 
         Toast.makeText(context, "알람~!!", Toast.LENGTH_SHORT).show();    // AVD 확인용
         Log.e("Alarm","알람입니다.");    // 로그 확인용
-        Intent AlarmService = new Intent(context,Screen_check.class);
-        context.startService(AlarmService);
+//        Intent AlarmService = new Intent(context,Screen_check.class);
+//        context.startService(AlarmService);
 
 
     }

@@ -118,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@id/today_sleep"
         app:layout_constraintLeft_toLeftOf="@id/today_sleep"
         app:layout_constraintRight_toRightOf="@id/today_sleep"
-        app:layout_constraintWidth_percent="0.554"
+        app:layout_constraintWidth_percent="0.524"
         app:layout_constraintHeight_percent="0.3"
         android:layout_marginTop="83dp"
         android:elevation="5dp"

@@ -7,24 +7,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.CalendarFragment">
 
-
-    <com.applandeo.materialcalendarview.CalendarView
-        android:id="@+id/calendarview"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:type="classic"
-        app:headerColor="#6744ff"
-        app:eventsEnabled="true"
-        app:abbreviationsLabelsColor="#6744ff"
-        app:selectionColor="#ffc200"
-        app:selectionLabelColor="#fff"
-        android:layout_marginTop="56dp"
-        android:layout_marginHorizontal="33dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHeight_percent="0.55"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.65"
+        android:background="@drawable/background_calendar"
+        />
 
+        <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/calendarview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:type="classic"
+            app:headerColor="#6744ff"
+            app:eventsEnabled="true"
+            app:abbreviationsLabelsColor="#6744ff"
+            app:selectionColor="#ffc200"
+            app:selectionLabelColor="#fff"
+            android:layout_marginTop="56dp"
+            android:layout_marginHorizontal="33dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHeight_percent="0.55" />
+
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/calendarview"
+        app:layout_constraintLeft_toLeftOf="@id/calendarview"
+        app:layout_constraintRight_toRightOf="@id/calendarview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/calendar_white_round"
+        />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="@id/calendarview"
+        app:layout_constraintRight_toRightOf="@id/calendarview"
+        app:layout_constraintTop_toBottomOf="@id/calendarview"
+        app:layout_constraintHeight_percent="0.10"
+        android:background="@drawable/calendar_orange_round"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

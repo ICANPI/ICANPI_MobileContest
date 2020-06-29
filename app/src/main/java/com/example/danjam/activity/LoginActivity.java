@@ -107,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "아이디 비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<Usermodel> call, Throwable t) {
 

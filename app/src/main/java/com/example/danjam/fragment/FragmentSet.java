@@ -26,6 +26,7 @@ import com.example.danjam.R;
 import com.example.danjam.activity.LoginActivity;
 import com.example.danjam.activity.MainActivity;
 import com.example.danjam.api.Apiservice;
+import com.example.danjam.data.SleepUpdateInfo;
 import com.example.danjam.data.UpdateInfo;
 import com.example.danjam.data.UserRevise;
 import com.example.danjam.data.Usermodel;
@@ -42,6 +43,7 @@ public class FragmentSet extends Fragment {
     private Retrofit retrofit;
     private InputMethodManager imm; //전역변수
     final static String BASE_URL = "https://unitaemin.run.goorm.io/danzam/";
+    private int responsecode;
 
     public FragmentSet() {
         // Required empty public constructor
@@ -95,12 +97,18 @@ public class FragmentSet extends Fragment {
         revise_id_button_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text_revise_id = revise_id.getText().toString();
-                createPut("id",text_revise_id);
+                if (responsecode == 400){
+                    Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                }else{
+                    text_revise_id = revise_id.getText().toString();
+                    createPut("id",text_revise_id);
+                }
                 revise_id_button.setVisibility(View.VISIBLE);
                 revise_id_button_check.setVisibility(View.INVISIBLE);
                 revise_id.setClickable(false);
                 revise_id.setFocusable(false);
+
+
             }
         });
 
@@ -171,9 +179,10 @@ public class FragmentSet extends Fragment {
         call.enqueue(new Callback<UpdateInfo>() {
             @Override
             public void onResponse(Call<UpdateInfo> call, Response<UpdateInfo> response) {
-                if (!response.isSuccessful()) {
-
-                    Log.e("hi",response.message());
+                if (response.isSuccessful()) {
+                    responsecode = response.code();
+                    Log.e("hi",response.code()+"");
+                    Log.e("hi",response+"");
                 }else {
                     Log.e("hi","윽안됌");
                 }
