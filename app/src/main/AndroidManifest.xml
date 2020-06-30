@@ -11,16 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ChagePwResult"></activity>
+        <activity android:name=".activity.ChangePwActivity" />
+        <activity android:name=".activity.FindPwResultActivity" />
+        <activity android:name=".activity.FindPwActivity" />
+        <activity android:name=".activity.FindIdResultActivity" />
+        <activity android:name=".activity.FindIdActivity" />
 
         <service android:name=".service.Screen_check" />
-        <activity android:name=".activity.JoinActivity"/>
-        <activity android:name=".activity.LoginActivity">
-        </activity>
+
+        <activity android:name=".activity.JoinActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".Splash" />
         <activity android:name=".activity.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,8 +38,7 @@
             android:label="ScreenOnReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="com.YECHAN_SCREEN"/>
-
+                <action android:name="com.YECHAN_SCREEN" />
             </intent-filter>
         </receiver>
     </application>
