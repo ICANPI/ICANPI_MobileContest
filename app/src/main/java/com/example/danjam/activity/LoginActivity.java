@@ -8,6 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,8 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Login_PW;
     private String Login_ID_str;
     private String Login_PW_str;
-    private String token;
-    FragmentSet fragmentSet = new FragmentSet();
+    private String accessToken,refresh_token;
 
 
     @Override
@@ -54,11 +54,21 @@ public class LoginActivity extends AppCompatActivity {
         Signup_bt = findViewById(R.id.signup_bt);
         Login_bt = findViewById(R.id.page_login_bt);
 
+        SharedPreferences token_sf = getSharedPreferences("token",MODE_PRIVATE);
+
+        token_sf.getString("access_token","");
+        token_sf.getString("refresh_token","");
+
+        if (token_sf!=null){
+            Intent main_intent_activity = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(main_intent_activity);
+        }
 
 
         //splash 화면 불러오기
         Intent intent = new Intent(getApplicationContext(), Splash.class);
         startActivity(intent);
+
 
         //값보내기
         Login_bt.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +88,8 @@ public class LoginActivity extends AppCompatActivity {
         Signup_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent signupintent = new Intent(getApplicationContext(), JoinActivity.class);
-                startActivity(signupintent);
+                Intent sign_up_intent = new Intent(getApplicationContext(), JoinActivity.class);
+                startActivity(sign_up_intent);
             }
         });
 
@@ -97,11 +107,22 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Usermodel> call, Response<Usermodel> response) {
 
                 if (response.isSuccessful()) {
+
                     Usermodel usermodel = response.body();
-                    Log.e("token",usermodel.getToken());
-                   Intent mainintent= new Intent(getApplicationContext(),MainActivity.class);
-                   mainintent.putExtra("token",usermodel.getToken());
-                   startActivity(mainintent);
+                    Log.e("access_token",usermodel.getAccessToken());
+                    Log.e("refresh_token",usermodel.getRefreshToken());
+                    accessToken = usermodel.getAccessToken();
+                    refresh_token = usermodel.getRefreshToken();
+
+                    SharedPreferences accessTokenSharedPreference = getSharedPreferences("token",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = accessTokenSharedPreference.edit();
+                    editor.putString("access_token",accessToken);
+                    editor.putString("refresh_token",refresh_token);
+                    editor.commit();
+
+
+                    Intent main_intent= new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(main_intent);
 
                 }else {
                     Toast.makeText(LoginActivity.this, "아이디 비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();

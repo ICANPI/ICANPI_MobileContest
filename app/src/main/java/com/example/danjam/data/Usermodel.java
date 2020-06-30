@@ -3,12 +3,16 @@ package com.example.danjam.data;
 public class Usermodel {
     private int Status;
     private String message;
-    private String token;
+    private boolean success;
+    private String accessToken;
+    private String refreshToken;
 
-    public Usermodel(int status, String message, String token) {
+    public Usermodel(int status, String message, boolean success, String accessToken, String refreshToken) {
         Status = status;
         this.message = message;
-        this.token = token;
+        this.success = success;
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
     }
 
     public int getStatus() {
@@ -27,11 +31,28 @@ public class Usermodel {
         this.message = message;
     }
 
-    public String getToken() {
-        return token;
+
+    public boolean isSuccess() {
+        return success;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
