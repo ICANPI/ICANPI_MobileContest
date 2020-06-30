@@ -1,32 +1,21 @@
 package com.example.danjam.fragment;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.danjam.R;
-import com.example.danjam.broadcastreciver.ScreenOnReceiver;
 import com.example.danjam.service.Screen_check;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.sql.Time;
 
 
 /**
@@ -62,7 +51,9 @@ public class FragmentTimer extends Fragment {
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 final FragmentTransaction transaction = fm.beginTransaction();
+                transaction.setCustomAnimations(R.anim.enter_anim,R.anim.fade_out);
                 transaction.replace(R.id.fragment,calendarFragment).commitAllowingStateLoss();
+
             }
         });
 
@@ -87,7 +78,6 @@ public class FragmentTimer extends Fragment {
         });
         return view;
     }
-
 
 }
 

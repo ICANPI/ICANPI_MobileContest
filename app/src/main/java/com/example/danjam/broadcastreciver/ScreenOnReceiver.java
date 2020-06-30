@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.danjam.activity.MainActivity;
 import com.example.danjam.fragment.FragmentTimer;
+import com.example.danjam.service.Screen_check;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,11 +33,6 @@ public class ScreenOnReceiver extends BroadcastReceiver {
             SimpleDateFormat sdfNow = new SimpleDateFormat("HH:mm:ss");
             formatDate1 = sdfNow.format(date1);
 
-            Intent timeSendIntent = new Intent(context, MainActivity.class);
-
-            timeSendIntent.putExtra("end_time",formatDate1);
-            timeSendIntent.putExtra("start_time",formatDate);
-
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             Date first_time = null;
             Date last_time = null;
@@ -44,19 +40,23 @@ public class ScreenOnReceiver extends BroadcastReceiver {
             try {
                 first_time = sdf.parse(formatDate);
                 last_time = sdf.parse(formatDate1);
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
             long duration =last_time.getTime() - first_time.getTime();
 
             TimeDifference = formatDuration(duration);
-
             SharedPreferences sharedPreferences = context.getSharedPreferences("time_file", Context.MODE_PRIVATE);
-
             SharedPreferences.Editor editor = sharedPreferences.edit();
-
             editor.putString("time_difference",TimeDifference);
             editor.commit();
+
+            Intent restart_intent = new Intent(context,MainActivity.class);
+            context.startActivity(restart_intent);
+            Intent stop_check = new Intent(context, Screen_check.class);
+            context.stopService(stop_check);
 
             if (sharedPreferences.getString("time_difference",null)!=null){
                 Log.e("broadcast",sharedPreferences.getString("time_difference",null));
