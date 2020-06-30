@@ -27,8 +27,8 @@ public class ScreenOnReceiver extends BroadcastReceiver {
 
         if (action.equals(Intent.ACTION_SCREEN_ON)) {
 
-            long endtime = System.currentTimeMillis();
-            Date date1 = new Date(endtime);
+            long end_time = System.currentTimeMillis();
+            Date date1 = new Date(end_time);
             SimpleDateFormat sdfNow = new SimpleDateFormat("HH:mm:ss");
             formatDate1 = sdfNow.format(date1);
 
@@ -55,20 +55,18 @@ public class ScreenOnReceiver extends BroadcastReceiver {
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
-//            editor.putString("start_time",formatDate);
-//            editor.putString("end_time",formatDate);
             editor.putString("time_difference",TimeDifference);
             editor.commit();
 
             if (sharedPreferences.getString("time_difference",null)!=null){
                 Log.e("broadcast",sharedPreferences.getString("time_difference",null));
             }
-//            context.startActivity(timeSendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
         }
 
         else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
-            long starttime = System.currentTimeMillis();
-            Date date = new Date(starttime);
+            long start_time = System.currentTimeMillis();
+            Date date = new Date(start_time);
             SimpleDateFormat sdfNow = new SimpleDateFormat("HH:mm:ss");
             formatDate = sdfNow.format(date);
             Log.e("formatDate",formatDate);

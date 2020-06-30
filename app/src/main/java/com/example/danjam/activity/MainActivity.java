@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.applandeo.materialcalendarview.CalendarView;
+import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
 import com.example.danjam.R;
 import com.example.danjam.broadcastreciver.Alarm;
 import com.example.danjam.fragment.FragmentCommunity;
@@ -124,12 +126,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onPause() {
+        super.onPause();
         SharedPreferences sf1 = getSharedPreferences("time_fie",MODE_PRIVATE);
         if (sf1.getString("time_difference","00:00:00")!=null){
             Bundle bundle = new Bundle();

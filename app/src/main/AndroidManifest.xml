@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ChagePwResult"></activity>
+        <activity android:name=".activity.ChangePwResult"></activity>
         <activity android:name=".activity.ChangePwActivity" />
         <activity android:name=".activity.FindPwResultActivity" />
         <activity android:name=".activity.FindPwActivity" />

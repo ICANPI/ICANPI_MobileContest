@@ -17,6 +17,17 @@
         android:background="@drawable/background_calendar"
         />
 
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="@id/calendarview"
+        app:layout_constraintRight_toRightOf="@id/calendarview"
+        app:layout_constraintBottom_toTopOf="@id/calendarview"
+        android:background="@drawable/calendar_corner"
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
         <com.applandeo.materialcalendarview.CalendarView
             android:id="@+id/calendarview"
             android:layout_width="match_parent"
@@ -27,12 +38,13 @@
             app:abbreviationsLabelsColor="#6744ff"
             app:selectionColor="#ffc200"
             app:selectionLabelColor="#fff"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="100dp"
             android:layout_marginHorizontal="33dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHeight_percent="0.55" />
+            app:layout_constraintHeight_percent="0.55"
+            />
 
 
 

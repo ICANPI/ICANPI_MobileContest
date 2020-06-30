@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FindIdResultActivity"
+    tools:context=".activity.FindPwResultActivity"
     android:background="#fbfbfb">
 
 
     <TextView
-        android:id="@+id/find_id_result_tv"
+        android:id="@+id/find_pw_result_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,18 +17,18 @@
         app:layout_constraintVertical_bias="0.309"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="'이예찬'님의 ID"
+        android:text="'이예찬'님의 비밀번호"
         android:textColor="#ffc200"
         android:textSize="23sp"
         />
 
     <TextView
-        android:id="@+id/find_id_result"
+        android:id="@+id/find_pw_result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/find_id_result_tv"
-        app:layout_constraintLeft_toLeftOf="@id/find_id_result_tv"
-        app:layout_constraintRight_toRightOf="@id/find_id_result_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_result_tv"
+        app:layout_constraintLeft_toLeftOf="@id/find_pw_result_tv"
+        app:layout_constraintRight_toRightOf="@id/find_pw_result_tv"
         android:textSize="18sp"
         android:text="asd123"
         android:layout_marginTop="20dp"
@@ -40,30 +40,31 @@
         />
 
     <Button
-        android:id="@+id/find_id_result_pw"
+        android:id="@+id/find_pw_result_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/find_id_result"
-        app:layout_constraintLeft_toLeftOf="@id/find_id_result_tv"
-        app:layout_constraintRight_toRightOf="@id/find_id_result_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_result"
+        app:layout_constraintLeft_toLeftOf="@id/find_pw_result_tv"
+        app:layout_constraintRight_toRightOf="@id/find_pw_result_tv"
         android:background="@drawable/login_round"
         android:layout_marginTop="66dp"
-        android:text="비밀번호 찾기"
+        android:text="비밀번호 변경"
         android:fontFamily="@font/font"
         android:textColor="#ffffff"
         />
     <Button
-        android:id="@+id/find_id_result_login"
+        android:id="@+id/find_pw_result_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/find_id_result_pw"
-        app:layout_constraintLeft_toLeftOf="@id/find_id_result_tv"
-        app:layout_constraintRight_toRightOf="@id/find_id_result_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_result_pw"
+        app:layout_constraintLeft_toLeftOf="@id/find_pw_result_tv"
+        app:layout_constraintRight_toRightOf="@id/find_pw_result_tv"
         android:background="@drawable/login_replace_round"
         android:layout_marginTop="10dp"
-        android:text="비밀번호 찾기"
+        android:text="로그인 창으로"
         android:fontFamily="@font/font"
         android:textColor="#ffffff"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

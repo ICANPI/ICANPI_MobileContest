@@ -64,7 +64,7 @@
             android:paddingVertical="13dp"
             android:paddingLeft="16dp"
             android:fontFamily="@font/font"
-            android:textColor="#000"/>
+            android:textColor="#9a9a9a"/>
 
         <EditText
             android:id="@+id/login_id_et"
@@ -120,7 +120,7 @@
                 android:paddingVertical="13dp"
                 android:paddingLeft="16dp"
                 android:fontFamily="@font/font"
-                android:textColor="#000"/>
+                android:textColor="#9a9a9a"/>
 
             <EditText
                 android:id="@+id/login_pw_et"
