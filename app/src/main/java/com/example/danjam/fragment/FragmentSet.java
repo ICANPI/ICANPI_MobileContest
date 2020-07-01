@@ -1,6 +1,7 @@
 package com.example.danjam.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -18,11 +19,16 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.danjam.R;
+import com.example.danjam.activity.LoginActivity;
 import com.example.danjam.api.Apiservice;
+import com.example.danjam.data.Refresh;
 import com.example.danjam.data.UpdateInfo;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -33,6 +39,7 @@ public class FragmentSet extends Fragment {
     Button revise_id_button,revise_pw_button,revise_name_button,revise_id_button_check,revise_pw_button_check,revise_name_button_check;
     private String text_revise_id,text_revise_pw,text_revise_name,token;
     private String update_id,update_pw,update_email,update_name;
+    private TextView log_out,textView;
     private Retrofit retrofit;
     private InputMethodManager imm; //전역변수
     final static String BASE_URL = "https://unitaemin.run.goorm.io/danzam/";
@@ -57,6 +64,11 @@ public class FragmentSet extends Fragment {
         revise_id_button_check = view.findViewById(R.id.revise_id_button_check);
         revise_pw_button_check = view.findViewById(R.id.revise_pw_button_check);
         revise_name_button_check = view.findViewById(R.id.revise_name_button_check);
+        textView = view.findViewById(R.id.set_member_name_tv);
+
+
+        log_out = view.findViewById(R.id.set_logout);
+
 
 
         revise_id.setClickable(false);
@@ -79,6 +91,8 @@ public class FragmentSet extends Fragment {
             revise_id.setHint(update_id);
             revise_pw.setHint(update_pw);
             revise_name.setHint(update_name);
+            textView.setText(update_name);
+
 
         }
 
@@ -176,6 +190,17 @@ public class FragmentSet extends Fragment {
             }
         });
 
+        log_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent1);
+                SharedPreferences sf = getActivity().getSharedPreferences("token",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sf.edit();
+                editor.remove("access_token");
+                editor.commit();
+            }
+        });
 
         return view;
     }
@@ -196,18 +221,53 @@ public class FragmentSet extends Fragment {
             @Override
             public void onResponse(Call<UpdateInfo> call, Response<UpdateInfo> response) {
                 if (response.isSuccessful()) {
-                    responsecode = response.code();
-                    Log.e("hi",response.code()+"");
-                    Log.e("hi",response+"");
-                }else { ;
+                    UpdateInfo updateInfo = response.body();
+
+
+                }else {
+
                 }
             }
+
             @Override
             public void onFailure(Call<UpdateInfo> call, Throwable t) {
-
             }
         });
     }
+
+//    private void RefreshTokenUpdate(String token){
+//        Apiservice apiservice = retrofit.create(Apiservice.class);
+//        Call<Refresh> call =apiservice.RefreshToken("Bearer "+token);
+//        call.enqueue(new Callback<Refresh>() {
+//            @Override
+//            public void onResponse(Call<Refresh> call, Response<Refresh> response) {
+//                Refresh refresh = response.body();
+//
+//                if (response.code()==401){
+//
+//                    Intent login_intent = new Intent(getActivity(), LoginActivity.class);
+//                    startActivity(login_intent);
+//                }
+//                SharedPreferences accessToken = getActivity().getSharedPreferences("token",Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = accessToken.edit();
+//                if (refresh.getAccessToken()!=null){
+//                    String refresh_access_token = refresh.getAccessToken();
+//                    editor.putString("access_token",refresh_access_token);
+//                }
+//                editor.commit();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Refresh> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//
+//    }
+
+
 
     private void showKeyboard(EditText editText) {
         imm.showSoftInput(editText, 0);

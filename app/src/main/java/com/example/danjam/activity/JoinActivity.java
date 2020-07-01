@@ -165,6 +165,7 @@ public class JoinActivity extends AppCompatActivity {
                 username = Username.getText().toString();
                 createPost(id,pw,email,username);
 
+
             }
         });
 

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.example.danjam.broadcastreciver.Alarm;
 import com.example.danjam.broadcastreciver.ScreenOnReceiver;
@@ -19,7 +20,6 @@ public class Screen_check extends Service{
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         mReceiver = new ScreenOnReceiver();
         registerReceiver(mReceiver, filter);
-
     }
 
     @Override

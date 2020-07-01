@@ -12,17 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.ChangePwResult"/>
-        <activity android:name=".activity.ChangePwActivity" />
-        <activity android:name=".activity.FindPwResultActivity" />
-        <activity android:name=".activity.FindPwActivity" />
-        <activity android:name=".activity.FindIdResultActivity" />
-        <activity android:name=".activity.FindIdActivity" />
+        <activity android:name=".activity.ChangePwResult"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ChangePwActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FindPwResultActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FindPwActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FindIdResultActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FindIdActivity"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".service.Screen_check" />
 
-        <activity android:name=".activity.JoinActivity" />
-        <activity android:name=".activity.LoginActivity" >
+        <activity android:name=".activity.JoinActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +39,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Splash" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <receiver
@@ -43,6 +52,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".broadcastreciver.Alarm"/>
     </application>
 
 </manifest>

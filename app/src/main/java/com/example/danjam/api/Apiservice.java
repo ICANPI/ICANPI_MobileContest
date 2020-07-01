@@ -1,6 +1,9 @@
 package com.example.danjam.api;
 
+import com.example.danjam.data.CreatePost;
+import com.example.danjam.data.Refresh;
 import com.example.danjam.data.SleepUpdateInfo;
+import com.example.danjam.data.TimeAddData;
 import com.example.danjam.data.UpdateInfo;
 import com.example.danjam.data.Usermodel;
 import com.example.danjam.data.SignUp;
@@ -40,6 +43,40 @@ public interface Apiservice {
             @Field("type")String[] type
     );
 
+    @FormUrlEncoded
+    @POST("auth/refresh")
+    Call<Refresh>RefreshToken(
+            @Header("Authorization")String token
+    );
+
+    @FormUrlEncoded
+    @POST("sleep/get")
+    Call<ResponseBody>SleepGet(
+            @Header("Authorization")String token,
+            @Field("type") String[] type,
+            @Field("date") String date
+    );
+//
+//
+//    @FormUrlEncoded
+    @POST("achievements/get")
+    Call<ResponseBody>AchievementGet(
+            @Header("Authorization")String token
+    );
+
+    @FormUrlEncoded
+    @POST("post/created")
+    Call<CreatePost> CreatedPost(
+            @Header("Authorization")String token,
+            @Field("title")String title,
+            @Field("text")String text
+    );
+
+    @POST("post/get")
+    Call<ResponseBody>GetPost(
+            @Header("Authorization")String token
+    );
+
     @PUT("auth/update_info")
     Call<UpdateInfo> ReviseUser(
             @Header("Authorization")String token,
@@ -48,9 +85,13 @@ public interface Apiservice {
 
     @PUT("sleep/update")
     Call<SleepUpdateInfo> SleepUpdate(
-            @Path("day")String day
+            @Header("Authorization")String token,
+            @Body SleepUpdateInfo sleepUpdateInfo
     );
-
-
-
+    @FormUrlEncoded
+    @POST("time/add")
+    Call<TimeAddData> TimeAdd(
+        @Field("time1")String time1,
+        @Field("time2")String time2
+    );
 }

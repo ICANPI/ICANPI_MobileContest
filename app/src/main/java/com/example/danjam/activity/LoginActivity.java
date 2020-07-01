@@ -41,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
+        //splash 화면 불러오기
+//        Intent intent = new Intent(getApplicationContext(), Splash.class);
+//        startActivity(intent);
+
 
         //레트로핏 선언부
         retrofit = new Retrofit.Builder()
@@ -54,20 +58,19 @@ public class LoginActivity extends AppCompatActivity {
         Signup_bt = findViewById(R.id.signup_bt);
         Login_bt = findViewById(R.id.page_login_bt);
 
+
         SharedPreferences token_sf = getSharedPreferences("token",MODE_PRIVATE);
 
-        token_sf.getString("access_token","");
-        token_sf.getString("refresh_token","");
+        accessToken = token_sf.getString("access_token","asd");
+        refresh_token = token_sf.getString("refresh_token","asd");
 
-        if (token_sf!=null){
+
+        if (accessToken!="asd"){
+            Log.e("token",token_sf.getString("access_token",""));
             Intent main_intent_activity = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(main_intent_activity);
         }
 
-
-        //splash 화면 불러오기
-        Intent intent = new Intent(getApplicationContext(), Splash.class);
-        startActivity(intent);
 
 
         //값보내기
@@ -77,7 +80,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 Login_ID_str = Login_ID.getText().toString();
                 Login_PW_str =Login_PW.getText().toString();
-
 
                 SigninPost(Login_ID_str,Login_PW_str);
             }

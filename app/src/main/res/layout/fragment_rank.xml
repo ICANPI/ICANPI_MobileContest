@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@id/complete_rank"
             app:layout_constraintLeft_toLeftOf="@id/complete_rank"
             app:layout_constraintRight_toRightOf="@id/complete_rank"
-            android:text="2개"
+            android:text="0개"
             android:textSize="48sp"
             android:fontFamily="@font/font"
             android:textColor="#fbfbfb"
@@ -92,32 +92,24 @@
         app:layout_constraintRight_toRightOf="@id/purple"
         android:textColor="#ffc200"
         android:textSize="21sp"
-        android:text="카테고리 1"
+        android:text="수면시간"
         android:fontFamily="@font/font"
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rank_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.281"
-        app:layout_constraintTop_toBottomOf="@id/category_1"
+        android:layout_marginRight="53dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@id/category_1"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="53dp"
-        tools:listitem="@layout/rank_item"
-        >
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/category_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/rank_item">
 
 
     </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

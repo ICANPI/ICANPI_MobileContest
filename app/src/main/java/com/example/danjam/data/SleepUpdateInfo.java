@@ -1,31 +1,27 @@
 package com.example.danjam.data;
 
 public class SleepUpdateInfo {
-    private int status;
-    private String message;
-    private boolean success;
+    private String day;
+    private String time;
 
-    public int getStatus() {
-        return status;
+    public SleepUpdateInfo(String day, String time) {
+        this.day = day;
+        this.time = time;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public String getDay() {
+        return day;
     }
 
-    public String getMessage() {
-        return message;
+    public void setDay(String day) {
+        this.day = day;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getTime() {
+        return time;
     }
 
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setTime(String time) {
+        this.time = time;
     }
 }

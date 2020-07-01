@@ -8,19 +8,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="0dp"
-        android:background="#fbfbfb"
+        android:background="@drawable/white_round"
         android:layout_marginBottom="10dp"
         >
 
         <TextView
+            android:id="@+id/achievements_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginVertical="13dp"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:textColor="#000"
             android:textSize="11sp"
             android:text="수면시간 5시간 이상"/>
 
         <ImageView
+            android:id="@+id/check"
             android:layout_width="27dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
